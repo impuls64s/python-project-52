@@ -33,6 +33,10 @@ ALLOWED_HOSTS = [
     'python-project-52-production-37c4.up.railway.app',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "http://0.0.0.0",
+    "http://localhost",
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -116,6 +120,8 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
+
+USE_L10N = True
 
 USE_TZ = True
 
