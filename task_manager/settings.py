@@ -46,9 +46,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'task_manager',
     'bootstrap4',
-    
+    'task_manager',
+    'task_manager.users',   
 ]
 
 MIDDLEWARE = [
@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'task_manager.urls'
@@ -116,7 +117,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
+
+LANGUAGES = (
+    ("en", "English"),
+    ("ru", "Russian"),
+)
 
 TIME_ZONE = 'UTC'
 
@@ -136,3 +142,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'users.Users'
