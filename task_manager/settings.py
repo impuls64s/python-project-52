@@ -43,8 +43,9 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://0.0.0.0",
-    "http://localhost",
+    'https://*.railway.app',
+    'https://127.0.0.1',
+    'https://localhost',
 ]
 # Application definition
 
