@@ -13,3 +13,6 @@ makemig:
 
 mig:
 	poetry run python manage.py migrate
+
+trans:
+	django-admin compilemessages
