@@ -30,12 +30,12 @@ SECRET_KEY = os.getenv('SECRET_KEY')#'django-insecure-9^hq@eu+d+xio$9xp8f6tkfrld
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-    #'localhost',
-    #'webserver',
-   # '0.0.0.0',
-    #'127.0.0.1',
-    #'python-project-52-production-37c4.up.railway.app',]
+ALLOWED_HOSTS = [
+    'localhost',
+    'webserver',
+    '0.0.0.0',
+    '127.0.0.1',
+    'python-project-52-production-37c4.up.railway.app']
 
 AUTH_USER_MODEL = 'users.Users'
 
