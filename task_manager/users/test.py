@@ -3,8 +3,7 @@ from task_manager.users.models import Users
 from django.urls import reverse
 
 # Create your tests here.
-
-class CRUD_Users_tests(TestCase):
+class CRUD_Users_Test(TestCase):
 
     # Создаем в БД 2-х пользователей
     @classmethod
@@ -103,7 +102,7 @@ class CRUD_Users_tests(TestCase):
         resp = self.client.get(reverse('delete_user', kwargs={'pk': user.id}))
         self.assertEqual(resp.status_code, 302)
         self.assertRedirects(resp, reverse('login'))        
-        
+
         '''Зайдя в профиль'''
         self.client.force_login(user)
         resp = self.client.get(reverse('delete_user', kwargs={'pk': user.id}))

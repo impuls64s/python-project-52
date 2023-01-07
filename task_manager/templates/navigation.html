@@ -6,6 +6,11 @@
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li><a href="{% url 'index' %}" class="navbar-brand">Менеджер задач</a></li>
         <li><a href="{% url 'home_users' %}" class="nav-link px-2 link-secondary">Пользователи</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'home_statuses' %}" class="nav-link px-2 link-secondary">Статусы</a></li>
+        <li><a href="{% url 'home_labels' %}" class="nav-link px-2 link-secondary">Метки</a></li>
+        <li><a href="{% url 'home_tasks' %}" class="nav-link px-2 link-secondary">Задачи</a></li>
+        {% endif %}
       </ul>
       
       <!-- Навигация сверху справа-->

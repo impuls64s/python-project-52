@@ -4,6 +4,7 @@ from django.contrib import messages
 
 # Вход в систему и вывод флеш сообщения
 class SignIn(SuccessMessageMixin, LoginView):
+    template_name ='login.html'
     success_message = 'Successfully login'
 
 # Выход из системы и вывод флеш сообщения
