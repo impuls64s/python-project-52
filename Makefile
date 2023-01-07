@@ -17,3 +17,7 @@ mig:
 
 trans:
 	django-admin compilemessages
+
+test:
+	poetry run coverage run ./manage.py test && coverage report
+	poetry run coverage xml
