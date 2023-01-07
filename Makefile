@@ -1,3 +1,6 @@
+install:
+	poetry install
+
 dev:
 	python3 manage.py runserver
 
@@ -18,6 +21,12 @@ mig:
 trans:
 	django-admin compilemessages
 
-test:
+lint:
+	poetry run flake8 task_manager
+
+tests:
+	poetry run python manage.py test
+
+tests-cov:
 	poetry run coverage run ./manage.py test && coverage report
 	poetry run coverage xml
