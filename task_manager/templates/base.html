@@ -1,5 +1,5 @@
 {% load static %}
-    
+{% load i18n %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,11 +13,10 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'headers.css' %}" rel="stylesheet">
     {% load bootstrap4 %}
-    {% load i18n %}
-
     {% bootstrap_css %}
-    {% bootstrap_javascript jquery=True %}
+    {% bootstrap_javascript jquery='full' %}
   </head>
+  
   <body class="d-flex flex-column min-vh-100">
     {% include "navigation.html" %}
     <div class="container">
