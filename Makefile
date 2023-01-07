@@ -25,7 +25,7 @@ lint:
 	poetry run flake8 task_manager
 
 tests:
-	poetry run python manage.py test
+	poetry run python3 manage.py test
 
 tests-cov:
 	poetry run coverage run ./manage.py test && coverage report
