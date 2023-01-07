@@ -35,4 +35,4 @@ jobs:
       with:
         coverageCommand: make tests-cov
         debug: true
-      continue-on-error: true
+
