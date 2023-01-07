@@ -39,7 +39,7 @@ lxml = ["lxml"]
 name = "coverage"
 version = "7.0.3"
 description = "Code coverage measurement for Python"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 
@@ -222,7 +222,7 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "cbd5209c35c22e39bf946d995a5df145d038033724eeb834636b6373f44b0c46"
+content-hash = "7153f7efd5a5f3098a3fd188f4b5432137d9333ff10d41ae7db95b7b6c7173e0"
 
 [metadata.files]
 asgiref = [
