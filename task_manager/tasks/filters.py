@@ -9,7 +9,7 @@ class TaskFilter(django_filters.FilterSet):
         if value:
             return queryset.filter(author=self.request.user)
         return queryset
-    
+
     own_tasks = django_filters.BooleanFilter(
         method='show_own_task',
         widget=forms.CheckboxInput,
@@ -22,6 +22,7 @@ class TaskFilter(django_filters.FilterSet):
             'class': 'form-select',
         })
     )
+    
     class Meta:
         model = Tasks
         fields = ['status', 'executor', 'label']

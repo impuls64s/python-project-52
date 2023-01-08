@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from django.views.generic import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from .models import Tasks
 from django.contrib.messages.views import SuccessMessageMixin
@@ -30,7 +30,7 @@ class ListTasks(TasksMixin, FilterView):
 class CreateTask(TasksMixin, CreateView):
     template_name = 'apps/apps_form.html'
     success_message = 'Задача создан, ебать ты молодец!'
-    
+
     # Добавляем имя автора в поле author, которое не отображается в форме
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -51,7 +51,7 @@ class UpdateTask(TasksMixin, UpdateView):
 class DeleteTask(TasksMixin, DeleteView):
     template_name = 'apps/apps_confirm_delete.html'
     success_message = 'Задача успешно удалена'
-    
+
     def has_permission(self) -> bool:
         return self.get_object().author.pk == self.request.user.pk
 

@@ -20,10 +20,10 @@ from .views import SignIn, LogOut, index2
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html'), name='index'),
-    path('er/', index2, ),
+    path('', index2, name='index2'),
     path('admin/', admin.site.urls),
-    path('login/', SignIn.as_view(), name = 'login'),
-    path('logout/', LogOut.as_view(), name = 'logout'),
+    path('login/', SignIn.as_view(), name='login'),
+    path('logout/', LogOut.as_view(), name='logout'),
     path('users/', include('task_manager.users.urls',)),
     path('statuses/', include('task_manager.statuses.urls',)),
     path('tasks/', include('task_manager.tasks.urls',)),

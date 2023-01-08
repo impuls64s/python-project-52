@@ -32,6 +32,7 @@ class UpdateStatus(StatusMixin, UpdateView):
     template_name = 'apps/apps_form.html'
     extra_context = {'title': 'Statuses', 'button': 'Изменить'}
 
+
 class DeleteStatus(StatusMixin, DeleteView):
     success_message = 'Статус успешно удалён'
     template_name = 'apps/apps_confirm_delete.html'

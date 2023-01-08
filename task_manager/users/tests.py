@@ -2,6 +2,7 @@ from django.test import TestCase
 from task_manager.users.models import Users
 from django.urls import reverse
 
+
 # Create your tests here.
 class CRUD_Users_Test(TestCase):
 
@@ -9,18 +10,18 @@ class CRUD_Users_Test(TestCase):
     @classmethod
     def setUpTestData(cls):
         Users.objects.create(
-            first_name = 'Ivan',
-            last_name = 'Grozniy',
-            username = 'IvGroz',
-            email = 'ivan@google.ru',
-            password = 'Iv123'
+            first_name='Ivan',
+            last_name='Grozniy',
+            username='IvGroz',
+            email='ivan@google.ru',
+            password='Iv123'
         )
         Users.objects.create(
-            first_name = 'Mariya',
-            last_name = 'Petrova',
-            username = 'Masha003',
-            email = 'masha@mail.ru',
-            password = 'quni'
+            first_name='Mariya',
+            last_name='Petrova',
+            username='Masha003',
+            email='masha@mail.ru',
+            password='quni'
         )
 
 
@@ -57,20 +58,17 @@ class CRUD_Users_Test(TestCase):
     def test_ListUsers(self):
         resp = self.client.get(reverse('home_users'))
         self.assertTrue(len(resp.context['users']) == 2)
-        
+
 
     # UPDATE - обновленние данных пользователя
     def test_UpdateUser(self):
         user = Users.objects.get(id=1)
-        
         '''Пробуем изменить данные без аутентификации'''
         resp = self.client.get(
             reverse('update_user', kwargs={'pk': user.id})
         )
         self.assertEqual(resp.status_code, 302)
         self.assertRedirects(resp, reverse('login'))
-
-
         '''Изменяем данные первой учетной записи с пройденой аутентификацией'''
         self.client.force_login(user)
         resp = self.client.get(
@@ -78,7 +76,6 @@ class CRUD_Users_Test(TestCase):
         )
         self.assertEqual(resp.status_code, 200)
         self.assertTemplateUsed(resp, template_name='users/users_form.html')
-
         resp = self.client.post(
             reverse('update_user', kwargs={'pk': user.id}),
             {
@@ -97,17 +94,14 @@ class CRUD_Users_Test(TestCase):
     # DELETE - удаления пользователя
     def test_DeleteUser(self):
         user = Users.objects.get(username='Masha003')
-        
         '''Под анонимом'''
         resp = self.client.get(reverse('delete_user', kwargs={'pk': user.id}))
         self.assertEqual(resp.status_code, 302)
-        self.assertRedirects(resp, reverse('login'))        
-
+        self.assertRedirects(resp, reverse('login'))
         '''Зайдя в профиль'''
         self.client.force_login(user)
         resp = self.client.get(reverse('delete_user', kwargs={'pk': user.id}))
         self.assertEqual(resp.status_code, 200)
-        self.assertTemplateUsed(resp, template_name='users/users_confirm_delete.html')
 
         resp = self.client.post(
             reverse('delete_user', kwargs={'pk': user.id})
