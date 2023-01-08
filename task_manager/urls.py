@@ -20,7 +20,7 @@ from .views import SignIn, LogOut, index2
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html'), name='index'),
-    path('', index2, name='index2'),
+    path('er/', index2, name='index2'),
     path('admin/', admin.site.urls),
     path('login/', SignIn.as_view(), name='login'),
     path('logout/', LogOut.as_view(), name='logout'),
