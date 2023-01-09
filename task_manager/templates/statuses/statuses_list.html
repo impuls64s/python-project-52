@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1 class="my-4">{{ title }}</h1>
-    <a class="link-primary" href="{% url 'create_status' %}">Создать статус</a>
+    <a class="link-primary" href="{% url 'create_status' %}">{% trans 'Add status' %}</a>
     
     <table class="table table-striped table-hover">
         <thead>

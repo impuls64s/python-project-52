@@ -25,6 +25,8 @@ class CRUD_Tasks_Test(TestCase):
         Labels.objects.create(name='label1')
         self.label = Labels.objects.get(id=1)
 
+        #Tasks.objects.create(name='status1')
+
     # Адреса которые нужно проверить
     url_tasks = [
         reverse('home_tasks'),

@@ -6,13 +6,14 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import ProtectedError
 from django.contrib import messages
 from django.shortcuts import redirect
+from django.utils.translation import gettext_lazy as _
 # Create your views here.
 
 
 # Класс который содержит все общие атрибуты классов CRUD
 class LabelsMixin(LoginRequiredMixin, SuccessMessageMixin):
     model = Labels
-    extra_context = {'title': 'Labels', 'button': 'Создать'}
+    extra_context = {'title': _('Labels'), 'button': _('Create')}
     login_url = reverse_lazy('login')
     success_url = reverse_lazy('home_labels')
     fields = ['name']
@@ -23,14 +24,14 @@ class ListLabels(LabelsMixin, ListView):
 
 
 class CreateLabel(LabelsMixin, CreateView):
-    success_message = 'Метка создана, ебать ты молодец!'
+    success_message = _("Label created successfully")
     template_name = 'apps/apps_form.html'
 
 
 class UpdateLabel(LabelsMixin, UpdateView):
-    success_message = 'Метка изменена, ебать ты молодец!'
+    success_message = _('Label successfully changed')
     template_name = 'apps/apps_form.html'
-    extra_context = {'title': 'Labels', 'button': 'Изменить'}
+    extra_context = {'title': _('Labels'), 'button': _('Change')}
 
 
 class DeleteLabel(LabelsMixin, DeleteView):
@@ -41,12 +42,12 @@ class DeleteLabel(LabelsMixin, DeleteView):
             self.delete(request, *args, **kwargs)
             messages.success(
                 self.request,
-                'Label successfully deleted'
+                _('Label successfully deleted')
             )
             return redirect(reverse_lazy('home_labels'))
         except ProtectedError:
             messages.error(
                 self.request,
-                "Error! Can't delete, label in use"
+                _("Error! Can't delete, label in use")
             )
             return redirect(reverse_lazy('home_labels'))

@@ -6,15 +6,15 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.shortcuts import redirect
-# Create your views here.
 from django_filters.views import FilterView
 from .filters import TaskFilter
+from django.utils.translation import gettext_lazy as _
 
 
 # Класс который содержит все общие атрибуты классов CRUD
 class TasksMixin(LoginRequiredMixin, SuccessMessageMixin):
     model = Tasks
-    extra_context = {'title': ' New Tasks', 'button': 'Создать'}
+    extra_context = {'title': _('New Tasks'), 'button': _('Create')}
     login_url = reverse_lazy('login')
     success_url = reverse_lazy('home_tasks')
     fields = ['name', 'description', 'status', 'executor', 'label']
@@ -22,14 +22,14 @@ class TasksMixin(LoginRequiredMixin, SuccessMessageMixin):
 
 class ListTasks(TasksMixin, FilterView):
     context_object_name = 'tasks'
-    extra_context = {'title': 'Tasks'}
+    extra_context = {'title': _('Tasks')}
     template_name = 'tasks/tasks_list.html'
     filterset_class = TaskFilter
 
 
 class CreateTask(TasksMixin, CreateView):
     template_name = 'apps/apps_form.html'
-    success_message = 'Задача создан, ебать ты молодец!'
+    success_message = _("Task created successfully")
 
     # Добавляем имя автора в поле author, которое не отображается в форме
     def form_valid(self, form):
@@ -39,18 +39,18 @@ class CreateTask(TasksMixin, CreateView):
 
 class ViewTask(TasksMixin, DetailView):
     context_object_name = 'task'
-    extra_context = {'title': 'Просмотр Задач'}
+    extra_context = {'title': _('Show task')}
 
 
 class UpdateTask(TasksMixin, UpdateView):
     template_name = 'apps/apps_form.html'
-    extra_context = {'title': ' New Tasks', 'button': 'Изменить'}
-    success_message = 'Задача изменена, ебать ты молодец!'
+    extra_context = {'title': _('Update task'), 'button': _('Change')}
+    success_message = _('Task successfully changed')
 
 
 class DeleteTask(TasksMixin, DeleteView):
     template_name = 'apps/apps_confirm_delete.html'
-    success_message = 'Задача успешно удалена'
+    success_message = _('Task successfully deleted')
 
     def has_permission(self) -> bool:
         return self.get_object().author.pk == self.request.user.pk
@@ -59,14 +59,14 @@ class DeleteTask(TasksMixin, DeleteView):
         if not request.user.is_authenticated:
             messages.error(
                 self.request,
-                "Error! You are not authenticated"
+                 _("Error! You are not authenticated")
             )
             return self.handle_no_permission()
 
         elif not self.has_permission():
             messages.error(
                 request,
-                "Error! You can't delete this task. Only author"
+                _("Error! You can't delete this task. Only author")
             )
             return redirect('home_tasks')
         return super().dispatch(request, *args, **kwargs)

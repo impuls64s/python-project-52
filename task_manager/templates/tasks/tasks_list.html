@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1 class="my-4">{{ title }}</h1>
-    <a class="link-primary" href="{% url 'create_task' %}">Создать задачу</a>
+    <a class="link-primary" href="{% url 'create_task' %}">{% trans 'Add task' %}</a>
     
         
     <div class="card mb-3">

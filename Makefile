@@ -18,6 +18,9 @@ makemig:
 mig:
 	poetry run python3 manage.py migrate
 
+parsetrans:
+	django-admin makemessages --ignore="static" --ignore=".env"  -l ru
+
 trans:
 	django-admin compilemessages
 
