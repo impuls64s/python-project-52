@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 class SignIn(SuccessMessageMixin, LoginView):
     template_name = 'login.html'
-    success_message = _('User created successfully')
+    success_message = _('Successfully login')
 
 
 class LogOut(SuccessMessageMixin, LogoutView):
