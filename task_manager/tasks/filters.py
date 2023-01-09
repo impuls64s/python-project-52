@@ -2,6 +2,7 @@ import django_filters
 from task_manager.labels.models import Labels
 from task_manager.tasks.models import Tasks
 from django import forms
+from django.utils.translation import gettext_lazy as _
 
 
 class TaskFilter(django_filters.FilterSet):
@@ -13,11 +14,11 @@ class TaskFilter(django_filters.FilterSet):
     own_tasks = django_filters.BooleanFilter(
         method='show_own_task',
         widget=forms.CheckboxInput,
-        label='Show own tasks',
+        label=_('Show own tasks'),
     )
     label = django_filters.ModelChoiceFilter(
         queryset=Labels.objects.all(),
-        label='Label',
+        label=_('Label'),
         widget=forms.Select(attrs={
             'class': 'form-select',
         })
