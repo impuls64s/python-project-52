@@ -33,10 +33,11 @@ class Tasks(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         verbose_name = _("=Task=")
         verbose_name_plural = _("=Tasks=")
+
 
 class TaskRelationLabel(models.Model):
     task = models.ForeignKey(Tasks, on_delete=models.CASCADE)

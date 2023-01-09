@@ -59,7 +59,7 @@ class DeleteTask(TasksMixin, DeleteView):
         if not request.user.is_authenticated:
             messages.error(
                 self.request,
-                 _("Error! You are not authenticated")
+                _("Error! You are not authenticated")
             )
             return self.handle_no_permission()
 
