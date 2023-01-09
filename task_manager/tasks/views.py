@@ -17,7 +17,7 @@ class TasksMixin(LoginRequiredMixin, SuccessMessageMixin):
     extra_context = {'title': _('New Tasks'), 'button': _('Create')}
     login_url = reverse_lazy('login')
     success_url = reverse_lazy('home_tasks')
-    fields = ['name', 'description', 'status', 'executor', 'label']
+    fields = ['name', 'description', 'status', 'executor', 'labels']
 
 
 class ListTasks(TasksMixin, FilterView):
