@@ -22,7 +22,7 @@ class Tasks(models.Model):
         related_name='executor',
         verbose_name=_('Executor'),
     )
-    label = models.ManyToManyField(
+    labels = models.ManyToManyField(
         Labels,
         related_name='label',
         through='TaskRelationLabel',
