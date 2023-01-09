@@ -114,7 +114,7 @@ msgstr "Только свои задачи"
 
 #: task_manager/tasks/filters.py:21 task_manager/tasks/models.py:29
 msgid "Label"
-msgstr "Метка"
+msgstr "Метки"
 
 #: task_manager/tasks/models.py:10
 msgid "Task name"
