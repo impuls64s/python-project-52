@@ -15,6 +15,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import dj_database_url
 
+
 env_path = os.path.join('.', '.env')
 load_dotenv(dotenv_path=env_path)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -118,23 +119,13 @@ if os.getenv('DATABASE_URL'):
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    #{
-        #'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    #},
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
         'OPTIONS': {
             'min_length': 3,
         }
     },
-    #{
-        #'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    #},
-    #{
-    #    'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    #},
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/

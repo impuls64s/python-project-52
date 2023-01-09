@@ -22,7 +22,7 @@ class TaskFilter(django_filters.FilterSet):
             'class': 'form-select',
         })
     )
-    
+
     class Meta:
         model = Tasks
         fields = ['status', 'executor', 'label']

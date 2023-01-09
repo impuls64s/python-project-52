@@ -6,7 +6,6 @@ from django.urls import reverse
 # Create your tests here.
 class CRUD_Users_Test(TestCase):
 
-    # Создаем в БД 2-х пользователей
     @classmethod
     def setUpTestData(cls):
         Users.objects.create(
@@ -23,7 +22,6 @@ class CRUD_Users_Test(TestCase):
             email='masha@mail.ru',
             password='quni'
         )
-
 
     # CREATE - Регистрация нового пользователя
     def test_SignUp(self):
@@ -48,17 +46,15 @@ class CRUD_Users_Test(TestCase):
         self.assertEqual(user.first_name, 'Alexey')
         self.assertEqual(user.last_name, 'Navalny')
         self.assertEqual(user.username, 'FBK')
-        
+
         '''Проверка наличия нового пользователя на сайте'''
         resp = self.client.get(reverse('home_users'))
         self.assertTrue(len(resp.context['users']) == 3)
-
 
     # READ - вывод списка всех пользователей
     def test_ListUsers(self):
         resp = self.client.get(reverse('home_users'))
         self.assertTrue(len(resp.context['users']) == 2)
-
 
     # UPDATE - обновленние данных пользователя
     def test_UpdateUser(self):
@@ -85,16 +81,15 @@ class CRUD_Users_Test(TestCase):
                 'password1': 'lovePiter',
                 'password2': 'lovePiter',
             }
-            )
+        )
         self.assertEqual(resp.status_code, 302)
         user.refresh_from_db()
         self.assertEqual(user.first_name, 'Petya')
 
-
     # DELETE - удаления пользователя
     def test_DeleteUser(self):
         user = Users.objects.get(username='Masha003')
-        '''Под анонимом'''
+        '''Без аутентификации'''
         resp = self.client.get(reverse('delete_user', kwargs={'pk': user.id}))
         self.assertEqual(resp.status_code, 302)
         self.assertRedirects(resp, reverse('login'))

@@ -19,7 +19,7 @@ class CRUD_Statuses_Test(TestCase):
         Statuses.objects.create(name='status2-relax')
         Statuses.objects.create(name='status3-test')
 
-    # Проверка функциональности незалогененым пользователям
+    # Проверка доступа незалогененым пользователям
     def test_access(self):
         '''Незалогинение пользователи получают редирект'''
         resp1 = self.client.get(reverse('create_status'))
