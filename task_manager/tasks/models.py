@@ -14,7 +14,7 @@ class Tasks(models.Model):
         Users,
         on_delete=models.PROTECT,
         related_name='author',
-        verbose_name=_('Author')
+        verbose_name=_('Author'),
     )
     executor = models.ForeignKey(
         Users,
@@ -22,7 +22,7 @@ class Tasks(models.Model):
         blank=True,
         null=True,
         related_name='executor',
-        verbose_name=_('Executor')
+        verbose_name=_('Executor'),
     )
     label = models.ManyToManyField(
         Labels,
