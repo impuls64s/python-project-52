@@ -1,4 +1,6 @@
 exclude_patterns:
 - "migrations/"
-- "task_manager/statuses/migrations/0001_initial.py"
 - "task_manager/**/migrations/"
+- "task_manager/**/admin.py"
+- "task_manager/**/urls.py"
+- "task_manager/**/models.py"
