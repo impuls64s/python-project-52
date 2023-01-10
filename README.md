@@ -5,6 +5,7 @@
 [![CI](https://github.com/impuls64s/python-project-52/actions/workflows/CI.yml/badge.svg)](https://github.com/impuls64s/python-project-52/actions/workflows/CI.yml)
 
 <h3>Менеджер задач</h3>
+https://python-project-52-production-37c4.up.railway.app/
 <p>Простое веб-приложения для управления задачами в компании или команде.
 Реализовано на фреймворке <b>Django 4.1.4</b> используя встроенные представления на основе классов (CBV) и базу данных <b>PostgreSql</b>. Дизайн сайта - <a href='https://getbootstrap.com/docs/5.0/getting-started/introduction/'>Bootstrap v5.0</a></p>
 <ul>
