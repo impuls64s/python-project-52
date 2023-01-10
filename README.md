@@ -19,7 +19,7 @@ https://python-project-52-production-37c4.up.railway.app/
   <li>Покрытие тестами</li>
 </ul>
 <h3>Переменные окружения</h3>
-<p>Необходимо в корне проекта создать файл .env и записать в переменные свои значения.</p>
+<p>Необходимо в корне проекта создать файл .env и записать туда значения переменных.</p>
 <pre>
 SECRET_KEY =
 DATABASE_URL = postgres://USER:PASSWORD@HOST:PORT/NAME
