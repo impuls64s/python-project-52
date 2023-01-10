@@ -4,3 +4,4 @@ exclude_patterns:
 - "task_manager/**/admin.py"
 - "task_manager/**/urls.py"
 - "task_manager/**/models.py"
+- "task_manager/tests/"
